@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   resources :categories, except: :show
 
-  resources :posts
+  resources :posts do
+    resources :comments, except: :show
+  end
 
   namespace :api do
     namespace :v1 do
