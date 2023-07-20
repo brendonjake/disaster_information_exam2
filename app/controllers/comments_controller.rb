@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-  class CommentsController < ApplicationController
     before_action :set_post
     before_action :set_comment, only: [:edit, :update, :destroy]
 
@@ -43,7 +42,6 @@ class CommentsController < ApplicationController
     def set_post
       @post = Post.find params[:post_id]
     end
-  end
 
   def comment_params
     params.require(:comment).permit(:content)
