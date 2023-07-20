@@ -1,0 +1,18 @@
+<h1>Disaster Information</h1>
+
+<table>
+  <thead>
+  <td>title</td>
+  <td>content</td>
+  <td>address</td>
+  <td>action</td>
+  </thead>
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.title %></td>
+      <td><%= post.content %></td>
+      <td><%= post.address %></td>
+      <td></td>
+    </tr>
+  <% end %>
+</table>
