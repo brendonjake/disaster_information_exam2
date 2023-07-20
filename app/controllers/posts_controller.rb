@@ -17,8 +17,23 @@ class PostsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-  
-   def show
-       @post = Post.find(params[:id])
-     end
+
+  def show
+    @post = Post.find(params[:id])
   end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(params.require(:post).permit(:title, :content))
+      flash[:notice] = 'Post updated successfully'
+      redirect_to posts_path
+    else
+      flash.now[:alert] = 'Post update failed'
+      render :edit, status: :unprocessable_entity
+    end
+  end
+end
