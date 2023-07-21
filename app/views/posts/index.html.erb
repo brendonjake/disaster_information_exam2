@@ -14,7 +14,7 @@
       <td><%= post.title %></td>
       <td><%= post.content %></td>
       <td><%= post.user&.email %></td>
-      <td><%= "#{post.region&.name} #{post.province&.name}" %></td>
+      <td><%= "#{post.region&.name} #{post.province&.name} #{post.city&.name} #{post.barangay&.name}" %></td>
       <td><%= post.categories.pluck(:name).join(',') %></td>
       <td>
         <%= link_to 'Show', post_path(post) %>
