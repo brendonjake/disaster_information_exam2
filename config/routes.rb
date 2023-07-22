@@ -13,6 +13,11 @@ Rails.application.routes.draw do
     resources :comments, except: :show
   end
 
+  namespace :user do
+    resources :posts, except: [:create, :new]
+    resources :comments, except: [:create, :new]
+  end
+
   namespace :api do
     namespace :v1 do
       resources :regions, only: %i[index show], defaults: { format: :json } do

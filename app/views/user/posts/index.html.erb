@@ -1,0 +1,34 @@
+<h1>Disaster Information</h1>
+
+<table>
+  <thead>
+  <td>title</td>
+  <td>content</td>
+  <td>category</td>
+  <td>address</td>
+  <td>user</td>
+  <td>country</td>
+  <td>city</td>
+  <td>action</td>
+
+  </thead>
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.title %></td>
+      <td><%= post.content %></td>
+      <td><%= post.user&.email %></td>
+      <td><%= "#{post.region&.name} #{post.province&.name} #{post.city&.name} #{post.barangay&.name}" %></td>
+      <td><%= post.categories.pluck(:name).join(',') %></td>
+      <td><%= Geocoder.search(post.ip_address).first&.country%></td>
+      <td><%= Geocoder.search(post.ip_address).first&.city%></td>
+      <td>
+        <%= link_to 'Show', user_post_path(post) %>
+        <%= link_to 'Edit', edit_user_post_path(post) if policy(post).edit? %>
+        <%= button_to 'Delete', user_post_path(post), method: :delete if policy(post).destroy? %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= paginate @posts %>
+<%= link_to 'New', new_post_path %>
