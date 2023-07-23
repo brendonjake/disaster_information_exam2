@@ -6,9 +6,11 @@
       <% end %>
     </ul>
   <% end %>
-  <div>
+  <div class="field form-group">
     <%= form.label :content %>
     <%= form.text_field :content %>
   </div>
-  <%= form.submit %>
+  <div class="action">
+    <%= form.submit class:'btn btn-secondary' %>
+  </div>
 <% end %>

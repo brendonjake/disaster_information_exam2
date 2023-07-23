@@ -1,5 +1,9 @@
 <%= form_with model: category, url: path, data: { turbo: false } do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-  <%= form.submit %>
+  <div class="field form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class:"form-control" %>
+  </div>
+  <div class="action">
+    <%= form.submit class:'btn btn-secondary'%>
+  </div>
 <% end %>
