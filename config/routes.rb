@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   resources :categories, except: :show
 
+  get '/export', to: 'export#export_to_csv'
+  resources :csv_imports, only: [:new, :create]
+
   resources :posts do
     resources :comments, except: :show
   end
